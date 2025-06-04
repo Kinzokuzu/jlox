@@ -79,6 +79,24 @@ public class Scanner {
                 if (match('/')) {
                     // A comment goes until the end of the line.
                     while (peek() != '\n' && !isAtEnd()) advance();
+                } else if (match('*')) {
+                    int startLine = line;
+
+                    while (!isAtEnd()) {
+                        if (peek() == '*' && peekNext() == '/') {
+                            break;
+                        } else {
+                            line++;
+                        }
+                        advance();
+                    }
+                    if (!isAtEnd()) {
+                        // Consume closing */
+                        advance();
+                        advance();
+                    } else {
+                        Lox.error(startLine, "Block comment not closed");
+                    }
                 } else {
                     addToken(TokenType.SLASH);
                 }
@@ -202,7 +220,7 @@ public class Scanner {
      * Consumes the next character in the source file and returns it.
      */
     private char advance() {
-        return source.charAt(current);
+        return source.charAt(current++);
     }
 
     private void addToken(TokenType type) {
