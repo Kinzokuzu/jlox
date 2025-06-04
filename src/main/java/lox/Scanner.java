@@ -80,6 +80,9 @@ public class Scanner {
                     // A comment goes until the end of the line.
                     while (peek() != '\n' && !isAtEnd()) advance();
                 } else if (match('*')) {
+                    /*
+                     * Stolen from https://github.com/svtm/jlox/blob/master/src/com/enielsen/lox/Scanner.java
+                     */
                     int startLine = line;
 
                     while (!isAtEnd()) {
