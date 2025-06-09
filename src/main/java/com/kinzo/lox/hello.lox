@@ -1,0 +1,6 @@
+// This is a single line comment
+a = "Hello, World!"
+/**
+ * This is multiline comment.
+ */
+print a

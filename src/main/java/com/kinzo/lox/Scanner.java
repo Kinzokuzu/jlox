@@ -1,4 +1,4 @@
-package lox;
+package com.kinzo.lox;
 
 import java.util.ArrayList;
 import java.util.HashMap;
