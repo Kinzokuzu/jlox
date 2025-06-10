@@ -1,4 +1,4 @@
-package lox;
+package com.kinzo.lox;
 
 public class Token {
     final TokenType type;
